@@ -1,0 +1,29 @@
+server:
+  port: 9191
+  
+spring:
+  application:
+    name: API-GATEWAY
+    
+  cloud:
+    gateway:
+      routes:
+        - id: MOVIE-SERVICE
+          uri: http://localhost:9003      # lb://MOVIE-SERVICE
+          predicates:
+            - Path=/movie/** 
+        
+        - id: CUSTOMER-SERVICE
+          uri: http://localhost:9004                           #lb://CUSTOMER-SERVICE
+          predicates:
+            - Path=/customer/** 
+    
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/
+eureka:
+  instance:
+    hostname: localhost
