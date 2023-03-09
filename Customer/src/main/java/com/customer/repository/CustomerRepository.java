@@ -8,4 +8,6 @@ import com.customer.entity.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, String>{
 
+	public Customer findByCustomerEmail(String customerEmail );
+
 }

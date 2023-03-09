@@ -1,32 +1,54 @@
 package com.movie.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.util.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+
+
 
 @Entity
+@Table(name =  "movie")
 public class Movie {
 	
 	
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "movie_id")
+	private Long movieId;
+	@Column(name = "movie_Name")
 	private String movieName;
-	private Double moviePrice; //use wrapper class Double
-	private String movieDate;  // use Date
-	private String movieStartTime; //Use DateAndTime
-	private String movieEndTime;
-	public Movie(String movieName, Double moviePrice, String movieDate, String movieStartTime,
-			String movieEndTime) {
-		super();
-		this.movieName = movieName;
-		
-		this.moviePrice = moviePrice;
-		this.movieDate = movieDate;
-		this.movieStartTime = movieStartTime;
-		this.movieEndTime = movieEndTime;
-	}
+	@Column(name = "movie_language")
+	private String movieLanguage;
+	@Column(name = "movie_duration")
+	private String movieDuration;
+	@Column(name = "movie_releaseDate")
+	private String movieReleaseDate;
+	
+	
 	public Movie() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public Movie(Long movieId, String movieName, String movieLanguage, String movieDuration, String movieReleaseDate) {
+		super();
+		this.movieId = movieId;
+		this.movieName = movieName;
+		this.movieLanguage = movieLanguage;
+		this.movieDuration = movieDuration;
+		this.movieReleaseDate = movieReleaseDate;
+	}
+	public Long getMovieId() {
+		return movieId;
+	}
+	public void setMovieId(Long movieId) {
+		this.movieId = movieId;
 	}
 	public String getMovieName() {
 		return movieName;
@@ -34,40 +56,31 @@ public class Movie {
 	public void setMovieName(String movieName) {
 		this.movieName = movieName;
 	}
-
-	public Double getMoviePrice() {
-		return moviePrice;
+	public String getMovieLanguage() {
+		return movieLanguage;
 	}
-	public void setMoviePrice(Double moviePrice) {
-		this.moviePrice = moviePrice;
+	public void setMovieLanguage(String movieLanguage) {
+		this.movieLanguage = movieLanguage;
 	}
-	public String getMovieDate() {
-		return movieDate;
+	public String getMovieDuration() {
+		return movieDuration;
 	}
-	public void setMovieDate(String movieDate) {
-		this.movieDate = movieDate;
+	public void setMovieDuration(String movieDuration) {
+		this.movieDuration = movieDuration;
 	}
-	public String getMovieStartTime() {
-		return movieStartTime;
+	
+	public String getMovieReleaseDate() {
+		return movieReleaseDate;
 	}
-	public void setMovieStartTime(String movieStartTime) {
-		this.movieStartTime = movieStartTime;
-	}
-	public String getMovieEndTime() {
-		return movieEndTime;
-	}
-	public void setMovieEndTime(String movieEndTime) {
-		this.movieEndTime = movieEndTime;
+	public void setMovieReleaseDate(String movieReleaseDate) {
+		this.movieReleaseDate = movieReleaseDate;
 	}
 	@Override
 	public String toString() {
-		return "Movie [movieName=" + movieName + ", moviePrice=" + moviePrice + ", movieDate="
-				+ movieDate + ", movieStartTime=" + movieStartTime + ", movieEndTime=" + movieEndTime + "]";
+		return "Movie [movieId=" + movieId + ", movieName=" + movieName + ", movieLanguage=" + movieLanguage
+				+ ", movieDuration=" + movieDuration + ", movieReleaseDate=" + movieReleaseDate + "]";
 	}
 	
-	
-	
-
 	
 	
 	

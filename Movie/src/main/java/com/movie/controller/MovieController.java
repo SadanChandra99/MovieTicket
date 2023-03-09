@@ -28,9 +28,9 @@ public class MovieController {
 	}
 	
 	@GetMapping(value = "/get/{id}")
-	public ResponseEntity<Movie> getbyid(@PathVariable("id") String name){
-		Movie getbyid = movieService.getMovieById(name);
-		return ResponseEntity.ok(getbyid);
+	public ResponseEntity<Movie> getbyid(@PathVariable("id") Long id){
+		Movie movie = movieService.getMovieById(id);
+		return ResponseEntity.ok(movie);
 	}
 	
 	@GetMapping(value = "/get")

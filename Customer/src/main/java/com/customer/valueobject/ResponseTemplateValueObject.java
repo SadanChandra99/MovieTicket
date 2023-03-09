@@ -1,20 +1,20 @@
-package com.customer.VO;
+package com.customer.valueobject;
 
 import com.customer.entity.Customer;
 
-public class ResponseTemplateVO {
+public class ResponseTemplateValueObject {
 	
 	private Customer customer;
 	private Movie movie;
 	
 	
 	
-	public ResponseTemplateVO(Customer customer, Movie movie) {
+	public ResponseTemplateValueObject(Customer customer, Movie movie) {
 		super();
 		this.customer = customer;
 		this.movie = movie;
 	}
-	public ResponseTemplateVO() {
+	public ResponseTemplateValueObject() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

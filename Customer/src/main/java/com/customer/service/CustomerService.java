@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.customer.VO.Movie;
-import com.customer.VO.ResponseTemplateVO;
 import com.customer.entity.Customer;
 import com.customer.repository.CustomerRepository;
+import com.customer.valueobject.Movie;
+import com.customer.valueobject.ResponseTemplateValueObject;
 
 @Service
 public class CustomerService {
@@ -20,7 +20,16 @@ public class CustomerService {
 	@Autowired
 	private RestTemplate restTemplate;
 	
+//	@Autowired
+//	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	
+	
 	public Customer createCustomer(Customer customer) {
+//		Customer createcustomer = customerRepository.save(customer);
+//		return createcustomer;
+		
+//		customer.setCustomerPassword(bCryptPasswordEncoder.encode(customer.getCustomerPassword()));
 		Customer createcustomer = customerRepository.save(customer);
 		return createcustomer;
 	}
@@ -35,15 +44,19 @@ public class CustomerService {
 		return allcustomers;
 	}
 	
-	public ResponseTemplateVO getcustomerandmoviebyid(String name) {
-		ResponseTemplateVO vo = new ResponseTemplateVO();
+	public ResponseTemplateValueObject getcustomerandmoviebyid(String name) {
+		ResponseTemplateValueObject vo = new ResponseTemplateValueObject();
 		
 		Customer customerbyid = customerRepository.findById(name).get();
 		
-		Movie movie = restTemplate.getForObject( "http://MOVIE-SERVICE/movie/get/" + customerbyid.getCustomerMovieName(), Movie.class);
+		Movie movie = restTemplate.getForObject( "http://MOVIE-SERVICE/movie/get/" + customerbyid.getCustomerMovieId(), Movie.class);
 		vo.setCustomer(customerbyid);
 		vo.setMovie(movie);
 		return vo;
+	}
+	
+	public String notAutherizedMessage() {
+		return "You are not autherized to access this page";
 	}
 
 }
